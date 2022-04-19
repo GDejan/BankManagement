@@ -118,27 +118,28 @@ namespace VjezbeC3
             Console.WriteLine(text);
             resetColor();
         }
-        public void PrintAccBalance(decimal amount, EnumColors EnumColor)
+        public void PrintAccBalance(decimal amount, decimal overDraft, EnumColors EnumColor)
         {
             selectColor(EnumColor);
             Console.WriteLine("Trenutno stanje je: {0,6:C2}", amount);
+            Console.WriteLine("Dozvoljeni minus: {0,6:C2}", overDraft);
             resetColor();
         }
 
         public string GetStringPaymentPlus(decimal amount) 
         {
-            return string.Format("Uplaceno: \t {0,6:C2} \tuplatitelj: {1}", amount, System.Security.Principal.WindowsIdentity.GetCurrent().Name);
+            return string.Format("Uplaceno: \t {0,6:C2} \tuplatitelj: {1}", amount, Environment.UserName);
         }
         public string GetStringPaymentMinus(decimal amount)
         {
-            return string.Format("Isplaceno:\t-{0,6:C2} \tisplatitelj: {1}", amount, System.Security.Principal.WindowsIdentity.GetCurrent().Name);
+            return string.Format("Isplaceno:\t-{0,6:C2} \tisplatitelj: {1}", amount, Environment.UserName);
         }
 
         public void PrintHeader(SessionAccount sessionAccount)
         {
             Console.Clear();
             Console.WriteLine("-----------{0}-----------", sessionAccount.User.FullName());
-            Console.WriteLine("- Privatni: {0} ", sessionAccount.User.IsPrivate);
+            Console.WriteLine("- Tip: {0} ", sessionAccount.User.IsPrivate.ToString());
             Console.WriteLine("- IBAN: {0} ", sessionAccount.User.IBAN);
             Console.WriteLine("- Racun: {0} ", sessionAccount.Account.accountType);
             Console.WriteLine("--------------------------------");

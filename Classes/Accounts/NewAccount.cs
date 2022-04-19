@@ -45,7 +45,7 @@ namespace VjezbeC3.Classes
 
                 if (selected == EnumAccType.Ziro)
                 {
-                    this.accountType = EnumAccType.Tekuci.ToString();
+                    this.accountType = EnumAccType.Ziro.ToString();
                     newGiro();
                     break;
                 }
@@ -56,7 +56,7 @@ namespace VjezbeC3.Classes
                         Print.PrintMsg(9, EnumColors.White);
                         overDraft = Checks.CheckAmount(Console.ReadLine());
                     } while (overDraft < 0);
-                    this.accountType = EnumAccType.Ziro.ToString();
+                    this.accountType = EnumAccType.Tekuci.ToString();
                     newStandard();
                     break;
                 }
@@ -99,14 +99,14 @@ namespace VjezbeC3.Classes
 
         private void newPrivate()
         {
-            PrivateUser privateAcc = new PrivateUser(name, surname, oib, Iban, true);
-            privateAcc.IsPrivate = true;
+            PrivateUser privateAcc = new PrivateUser(name, surname, oib, Iban, EnumUserType.Privatni);
+            //privateAcc.IsPrivate = EnumUserType.Privatni;
             Database.IbanUser.Add(Iban, privateAcc);
         }
         private void newBussines(string companyName)
         {
-            BusinessUser business = new BusinessUser(name, surname, oib, Iban, companyName, false);
-            business.IsPrivate = false;
+            BusinessUser business = new BusinessUser(name, surname, oib, Iban, companyName, EnumUserType.Poslovni);
+            //business.IsPrivate = EnumUserType.Poslovni;
             Database.IbanUser.Add(Iban, business);
         }
 

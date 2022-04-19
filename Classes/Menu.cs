@@ -36,8 +36,7 @@ namespace VjezbeC3
             {
                 case "1":
                     Print.PrintMsg(16, EnumColors.White);
-                    Print.PrintAccBalance(sessionAccount.Account.Balance(), EnumColors.White);
-                    //Console.WriteLine("Dozvoljeni minus: {0,6:C2}", sessionAccount.Account.overDraft);
+                    Print.PrintAccBalance(sessionAccount.Account.Balance(), sessionAccount.Account.OverDraft, EnumColors.White);
                     exitSwitch();
                     break;
                 case "2":
@@ -53,7 +52,7 @@ namespace VjezbeC3
                     } while (amount<0);
 
                     sessionAccount.Account.PaymentPlus(amount, localTime, Print.GetStringPaymentPlus(amount));
-                    Print.PrintAccBalance(sessionAccount.Account.Balance(), EnumColors.White);
+                    Print.PrintAccBalance(sessionAccount.Account.Balance(), sessionAccount.Account.OverDraft, EnumColors.White);
                     exitSwitch();
                     break;
                 case "4":
@@ -64,7 +63,7 @@ namespace VjezbeC3
                     } while (amount < 0);
 
                     sessionAccount.Account.PaymentMinus(amount, localTime, Print.GetStringPaymentMinus(amount));
-                    Print.PrintAccBalance(sessionAccount.Account.Balance(), EnumColors.White);
+                    Print.PrintAccBalance(sessionAccount.Account.Balance(), sessionAccount.Account.OverDraft,EnumColors.White);
                     exitSwitch();
                     break;
                 case "5":

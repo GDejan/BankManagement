@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VjezbeC3.Classes.Accounts;
 using static VjezbeC3.Enumerators;
 
 namespace VjezbeC3
 {
-    internal abstract class Account: IAccount
+    internal abstract class Account
     {
         public string IBAN { get; set; }
         private decimal accountBalance;
@@ -17,8 +16,15 @@ namespace VjezbeC3
         public string accountType { get; private set; }
 
         private Print Print = new Print();
-       
-        
+
+        private decimal overDraft;
+
+        public decimal OverDraft
+        {
+            get { return overDraft; }
+            set { overDraft = value; }
+        }
+
         public Dictionary<DateTime, string> AccountHistory = new Dictionary<DateTime, string>();
 
         public Account(string iban, string accType)
@@ -70,7 +76,7 @@ namespace VjezbeC3
             {
                 Print.PrintTxt(item.ToString(), EnumColors.White);
             }
-            Print.PrintAccBalance(AccountBalance, EnumColors.White);
+            Print.PrintAccBalance(AccountBalance, OverDraft, EnumColors.White);
         }
 
         public void SetHistory(DateTime localTime, string Description) 

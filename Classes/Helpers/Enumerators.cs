@@ -33,5 +33,12 @@ namespace VjezbeC3
             Main=1,
             Menu=2
         }
+
+        public enum EnumUserType
+        {
+            Privatni,
+            Poslovni
+        }
+
     }
 }

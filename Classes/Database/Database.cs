@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static VjezbeC3.Enumerators;
 
 namespace VjezbeC3
 {
@@ -19,11 +20,11 @@ namespace VjezbeC3
         };  
         public static Dictionary<string, Users> IbanUser = new Dictionary<string, Users>()
         {
-            {"T-1234",new PrivateUser("Pero", "Peric","1234","T-1234",true)},
-            {"T-2345",new PrivateUser("Nika", "Nikic","2345","T-2345",true)},
-            {"Z-2345",new PrivateUser("Nika", "Nikic","2345","Z-2345",true)},
-            {"Z-3456",new BusinessUser("Jura", "Juric","3456","Z-3456","Juric d.o.o.", false)},
-            {"T-3456",new PrivateUser("Jura", "Juric","3456","T-3456",true)}
+            {"T-1234",new PrivateUser("Pero", "Peric","1234","T-1234",EnumUserType.Privatni)},
+            {"T-2345",new PrivateUser("Nika", "Nikic","2345","T-2345",EnumUserType.Privatni)},
+            {"Z-2345",new PrivateUser("Nika", "Nikic","2345","Z-2345",EnumUserType.Privatni)},
+            {"Z-3456",new BusinessUser("Jura", "Juric","3456","Z-3456","Juric d.o.o.", EnumUserType.Poslovni)},
+            {"T-3456",new PrivateUser("Jura", "Juric","3456","T-3456",EnumUserType.Privatni)}
         };
 
         

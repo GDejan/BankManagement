@@ -10,25 +10,19 @@ namespace VjezbeC3
     internal class StandardAcc : Account
     {
         private Print Print = new Print();
-        private decimal overDraft;
-
-        public decimal OverDraft
-        {
-            get { return overDraft; }
-            private set { overDraft = value; }
-        }
+        
 
         public StandardAcc(string iban, decimal overDraft, string accType)
             :base(iban,accType)
         {
-            this.OverDraft = overDraft;
+            base.OverDraft = overDraft;
         }
 
         public override void PaymentMinus(decimal amount, DateTime localTime, string Description)
         {
             if (amount > 0)
             {
-                if ((AccountBalance + overDraft) >= amount)
+                if ((AccountBalance + OverDraft) >= amount)
                 {
                     AccountBalance = AccountBalance - amount;
                     SetHistory(localTime, Description);

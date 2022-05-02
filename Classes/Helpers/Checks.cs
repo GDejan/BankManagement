@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static VjezbeC3.Enumerators;
+using static BankManagement.Enumerators;
 
-namespace VjezbeC3
+namespace BankManagement
 {
     class Checks
     {
@@ -39,13 +39,13 @@ namespace VjezbeC3
                 }
                 else 
                 {
-                    Print.PrintMsg(100, EnumColors.Red);
+                    Print.PrintMsg(EnumPrintId.WrongInput, EnumColors.Red);
                     return -1;
                 }
             }
             catch 
             {
-                Print.PrintMsg(100, EnumColors.Red);
+                Print.PrintMsg(EnumPrintId.WrongInput, EnumColors.Red);
                 return -1;
             }
         }

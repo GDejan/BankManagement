@@ -1,7 +1,7 @@
-﻿using VjezbeC3.Classes.Helpers;
-using static VjezbeC3.Enumerators;
+﻿using BankManagement.Classes.Helpers;
+using static BankManagement.Enumerators;
 
-namespace VjezbeC3.Classes
+namespace BankManagement.Classes
 {
     internal class Exit
     {
@@ -20,14 +20,14 @@ namespace VjezbeC3.Classes
         {
             do
             {
-                Print.PrintMsg(110, EnumColors.Red);
+                Print.PrintMsg(EnumPrintId.ExitHeader, EnumColors.Red);
                 switch (fromWhere)
                 {
                     case EnumExit.Menu:
-                        Print.PrintMsg(48, EnumColors.White);
+                        Print.PrintMsg(EnumPrintId.CloseUser, EnumColors.White);
                         break;
                     case EnumExit.Main:
-                        Print.PrintMsg(49, EnumColors.White);
+                        Print.PrintMsg(EnumPrintId.EndApp, EnumColors.White);
                         break;
                 }
 
@@ -45,7 +45,7 @@ namespace VjezbeC3.Classes
                 }
                 else
                 {
-                    Print.PrintMsg(100, EnumColors.Red);
+                    Print.PrintMsg(EnumPrintId.WrongInput, EnumColors.Red);
                     continue;
                 }
 

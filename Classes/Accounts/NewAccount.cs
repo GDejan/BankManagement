@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VjezbeC3.Classes.Helpers;
-using static VjezbeC3.Enumerators;
+using BankManagement.Classes.Helpers;
+using static BankManagement.Enumerators;
 
-namespace VjezbeC3.Classes
+namespace BankManagement.Classes
 {
     internal class NewAccount
     {
@@ -16,7 +16,7 @@ namespace VjezbeC3.Classes
         private string name { get; set; }
         private string surname { get; set; }
         private string oib { get; set; }
-        private string accountType { get; set; }
+        private EnumAccType accountType { get; set; }
         private decimal overDraft;
         private string Iban { get; set; }
         private string companyName { get; set; }
@@ -24,11 +24,11 @@ namespace VjezbeC3.Classes
 
         public NewAccount()
         {
-            Print.PrintMsg(3, EnumColors.White);
+            Print.PrintMsg(EnumPrintId.UserName, EnumColors.White);
             this.name = Console.ReadLine();
-            Print.PrintMsg(4, EnumColors.White);
+            Print.PrintMsg(EnumPrintId.UserSurname, EnumColors.White);
             this.surname = Console.ReadLine();
-            Print.PrintMsg(2, EnumColors.White);
+            Print.PrintMsg(EnumPrintId.UserOib, EnumColors.White);
             this.oib = Console.ReadLine();
 
             newAccount();
@@ -40,12 +40,12 @@ namespace VjezbeC3.Classes
         {
             do
             {
-                Print.PrintMsg(8, EnumColors.White);
+                Print.PrintMsg(EnumPrintId.AccType, EnumColors.White);
                 EnumAccType selected = selection.GetUserAccType();
 
                 if (selected == EnumAccType.Ziro)
                 {
-                    this.accountType = EnumAccType.Ziro.ToString();
+                    this.accountType = EnumAccType.Ziro;
                     newGiro();
                     break;
                 }
@@ -53,16 +53,16 @@ namespace VjezbeC3.Classes
                 {
                     do
                     {
-                        Print.PrintMsg(9, EnumColors.White);
+                        Print.PrintMsg(EnumPrintId.AccOwerdraft, EnumColors.White);
                         overDraft = Checks.CheckAmount(Console.ReadLine());
                     } while (overDraft < 0);
-                    this.accountType = EnumAccType.Tekuci.ToString();
+                    this.accountType = EnumAccType.Tekuci;
                     newStandard();
                     break;
                 }
                 else
                 {
-                    Print.PrintMsg(100, EnumColors.Red);
+                    Print.PrintMsg(EnumPrintId.WrongInput, EnumColors.Red);
                     continue;
                 }
             } while (true);
@@ -72,26 +72,26 @@ namespace VjezbeC3.Classes
         {
             do
             {
-                Print.PrintMsg(6, EnumColors.White);
+                Print.PrintMsg(EnumPrintId.IsBussines, EnumColors.White);
                 EnumYesNO selected = selection.GetUserYesNo();
                 if (selected == EnumYesNO.Da)
                 {
-                    Print.PrintMsg(7, EnumColors.White);
+                    Print.PrintMsg(EnumPrintId.CompanyName, EnumColors.White);
                     companyName = Console.ReadLine();
 
                     newBussines(companyName);
-                    Print.PrintMsg(50, EnumColors.Green);
+                    Print.PrintMsg(EnumPrintId.UserAddedHeader, EnumColors.Green);
                     break;
                 }
                 else if (selected == EnumYesNO.Ne)
                 {
                     newPrivate();
-                    Print.PrintMsg(50, EnumColors.Green);
+                    Print.PrintMsg(EnumPrintId.UserAddedHeader, EnumColors.Green);
                     break;
                 }
                 else 
                 {
-                    Print.PrintMsg(100, EnumColors.Red);
+                    Print.PrintMsg(EnumPrintId.WrongInput, EnumColors.Red);
                     continue;
                 }
             } while (true);          
@@ -100,13 +100,11 @@ namespace VjezbeC3.Classes
         private void newPrivate()
         {
             PrivateUser privateAcc = new PrivateUser(name, surname, oib, Iban, EnumUserType.Privatni);
-            //privateAcc.IsPrivate = EnumUserType.Privatni;
             Database.IbanUser.Add(Iban, privateAcc);
         }
         private void newBussines(string companyName)
         {
             BusinessUser business = new BusinessUser(name, surname, oib, Iban, companyName, EnumUserType.Poslovni);
-            //business.IsPrivate = EnumUserType.Poslovni;
             Database.IbanUser.Add(Iban, business);
         }
 

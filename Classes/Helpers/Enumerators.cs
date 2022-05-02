@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VjezbeC3
+namespace BankManagement
 {
     public class Enumerators
     {
@@ -12,7 +12,7 @@ namespace VjezbeC3
         {
             //0 reserved for fault
             Tekuci = 1,
-            Ziro=2
+            Ziro = 2
         }
         public enum EnumColors 
         {
@@ -24,20 +24,52 @@ namespace VjezbeC3
         {
             //0 reserved for fault
             Da = 1,
-            Ne=2
+            Ne = 2
         }
 
         public enum EnumExit 
         {
             //0 reserved for fault
-            Main=1,
-            Menu=2
+            Main = 1,
+            Menu = 2
         }
 
         public enum EnumUserType
         {
             Privatni,
             Poslovni
+        }
+
+        public enum EnumPrintId
+        {
+            AccIban,
+            UserOib,
+            UserName,
+            UserSurname,
+            NewUserYesNo,
+            IsBussines,
+            CompanyName,
+            AccType,
+            AccOwerdraft,
+            BalanceAcc,
+            PlusAmount,
+            MinusAmount,
+            HistoryHeader,
+            EndHeader,
+            PressEnter,
+            BalanceHeader,
+            PrintMenu,
+            AddNewUser,
+            NewUserHeader,
+            ExistUser,
+            CloseUser,
+            EndApp,
+            UserAddedHeader,
+            NewAccountHeader,
+            WrongInput,
+            AccNotFound,
+            IssufientBalance,
+            ExitHeader
         }
 
     }

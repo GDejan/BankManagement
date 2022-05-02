@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VjezbeC3.Classes;
-using static VjezbeC3.Enumerators;
+using BankManagement.Classes;
+using static BankManagement.Enumerators;
 
-namespace VjezbeC3
+namespace BankManagement
 {
     internal class Menu
     {
@@ -20,7 +20,7 @@ namespace VjezbeC3
             do
             {
                 Print.PrintHeader(sessionAccount);
-                Print.PrintMsg(20, EnumColors.White);
+                Print.PrintMsg(EnumPrintId.PrintMenu, EnumColors.White);
                 OpSelection(Console.ReadLine());
 
             } while ((sessionAccount.IsActiv));
@@ -35,19 +35,19 @@ namespace VjezbeC3
             switch (selection)
             {
                 case "1":
-                    Print.PrintMsg(16, EnumColors.White);
+                    Print.PrintMsg(EnumPrintId.BalanceHeader, EnumColors.White);
                     Print.PrintAccBalance(sessionAccount.Account.Balance(), sessionAccount.Account.OverDraft, EnumColors.White);
                     exitSwitch();
                     break;
                 case "2":
-                    Print.PrintMsg(13, EnumColors.White);
+                    Print.PrintMsg(EnumPrintId.HistoryHeader, EnumColors.White);
                     sessionAccount.Account.GetHistory();
                     exitSwitch();
                     break;
                 case "3":
                     do
                     {
-                        Print.PrintMsg(11, EnumColors.White);
+                        Print.PrintMsg(EnumPrintId.PlusAmount, EnumColors.White);
                         amount = Checks.CheckAmount(Console.ReadLine());
                     } while (amount<0);
 
@@ -58,7 +58,7 @@ namespace VjezbeC3
                 case "4":
                     do
                     {
-                        Print.PrintMsg(12, EnumColors.White);
+                        Print.PrintMsg(EnumPrintId.MinusAmount, EnumColors.White);
                         amount = Checks.CheckAmount(Console.ReadLine());
                     } while (amount < 0);
 
@@ -76,16 +76,16 @@ namespace VjezbeC3
                     }
                     break;
                 default:
-                    Print.PrintMsg(100, EnumColors.Red);
-                    Print.PrintMsg(15, EnumColors.White);
+                    Print.PrintMsg(EnumPrintId.WrongInput, EnumColors.Red);
+                    Print.PrintMsg(EnumPrintId.PressEnter, EnumColors.White);
                     Console.ReadLine();
                     break;
             }
         }
         private void exitSwitch()
         {
-            Print.PrintMsg(14, EnumColors.White);
-            Print.PrintMsg(15, EnumColors.White);
+            Print.PrintMsg(EnumPrintId.EndHeader, EnumColors.White);
+            Print.PrintMsg(EnumPrintId.PressEnter, EnumColors.White);
             Console.ReadLine();
         }
     }

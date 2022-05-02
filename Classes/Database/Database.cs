@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static VjezbeC3.Enumerators;
+using static BankManagement.Enumerators;
 
-namespace VjezbeC3
+namespace BankManagement
 {
     static class Database
     {
 
         public static Dictionary<string, Account> IbanAccount = new Dictionary<string, Account>()
         {
-            {"T-1234", new StandardAcc("T-1234",1000.0m,"tekuci")},
-            {"T-2345", new StandardAcc("T-2345",1000.0m,"tekuci")},
-            {"Z-2345", new GiroAcc("Z-1234","ziro")},
-            {"Z-3456", new GiroAcc("Z-3456","ziro")},
-            {"T-3456", new StandardAcc("T-2345",10000.0m,"tekuci")},
+            {"T-1234", new StandardAcc("T-1234",1000.0m,EnumAccType.Tekuci)},
+            {"T-2345", new StandardAcc("T-2345",1000.0m,EnumAccType.Tekuci)},
+            {"Z-2345", new GiroAcc("Z-1234",EnumAccType.Ziro)},
+            {"Z-3456", new GiroAcc("Z-3456",EnumAccType.Ziro)},
+            {"T-3456", new StandardAcc("T-2345",10000.0m,EnumAccType.Tekuci)},
         };  
         public static Dictionary<string, Users> IbanUser = new Dictionary<string, Users>()
         {

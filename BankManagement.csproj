@@ -7,4 +7,19 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Update="Classes\Database\AccountUser.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AccountUser.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Classes\Database\AccountUser.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AccountUser.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
 </Project>

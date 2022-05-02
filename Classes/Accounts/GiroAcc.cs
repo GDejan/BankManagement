@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BankManagement.Enumerators;
 
-namespace VjezbeC3
+namespace BankManagement
 {
     internal class GiroAcc : Account
     {
-        public GiroAcc(string iban, string accType)
+        public GiroAcc(string iban, EnumAccType accType)
             :base(iban, accType)
         {
 

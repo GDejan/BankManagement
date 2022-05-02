@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static VjezbeC3.Enumerators;
+using static BankManagement.Enumerators;
 
-namespace VjezbeC3
+namespace BankManagement
 {
     internal class StandardAcc : Account
     {
         private Print Print = new Print();
         
 
-        public StandardAcc(string iban, decimal overDraft, string accType)
+        public StandardAcc(string iban, decimal overDraft, EnumAccType accType)
             :base(iban,accType)
         {
             base.OverDraft = overDraft;
@@ -29,12 +29,12 @@ namespace VjezbeC3
                 }
                 else
                 {
-                    Print.PrintMsg(102, EnumColors.Red);
+                    Print.PrintMsg(EnumPrintId.IssufientBalance, EnumColors.Red);
                 }
             }
             else
             {
-                Print.PrintMsg(100, EnumColors.Red);
+                Print.PrintMsg(EnumPrintId.WrongInput, EnumColors.Red);
             }            
         }
 

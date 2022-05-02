@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static VjezbeC3.Enumerators;
+using static BankManagement.Enumerators;
 
-namespace VjezbeC3
+namespace BankManagement
 {
     internal abstract class Account
     {
@@ -13,7 +13,7 @@ namespace VjezbeC3
         private decimal accountBalance;
         public decimal AccountBalance { get; set; }
 
-        public string accountType { get; private set; }
+        public EnumAccType accountType { get; private set; }
 
         private Print Print = new Print();
 
@@ -27,7 +27,7 @@ namespace VjezbeC3
 
         public Dictionary<DateTime, string> AccountHistory = new Dictionary<DateTime, string>();
 
-        public Account(string iban, string accType)
+        public Account(string iban, EnumAccType accType)
         {
             this.IBAN = iban;
             this.accountType = accType;
@@ -42,7 +42,7 @@ namespace VjezbeC3
             }
             else 
             {
-                Print.PrintMsg(100, EnumColors.Red);
+                Print.PrintMsg(EnumPrintId.WrongInput, EnumColors.Red);
             }
         }
         public virtual void PaymentMinus(decimal amount, DateTime localTime, string Description)
@@ -56,12 +56,12 @@ namespace VjezbeC3
                 }
                 else
                 {
-                    Print.PrintMsg(102, EnumColors.Red);
+                    Print.PrintMsg(EnumPrintId.IssufientBalance, EnumColors.Red);
                 }
             }
             else 
             {
-                Print.PrintMsg(100, EnumColors.Red);
+                Print.PrintMsg(EnumPrintId.WrongInput, EnumColors.Red);
             }
             
         }

@@ -3,67 +3,67 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static VjezbeC3.Enumerators;
+using static BankManagement.Enumerators;
 
-namespace VjezbeC3
+namespace BankManagement
 {
     internal class Print
     {
-        public void PrintMsg(int Msgid, EnumColors EnumColor)
+        public void PrintMsg(EnumPrintId Msgid, EnumColors EnumColor)
         {
             selectColor(EnumColor);
 
             switch (Msgid)
             {
-                case 1:
+                case EnumPrintId.AccIban:
                     Console.Write("Unesite IBAN racuna: ");
                     break;
-                case 2:
+                case EnumPrintId.UserOib:
                     Console.Write("Unesite OIB korisnika: ");
                     break;
-                case 3:
+                case EnumPrintId.UserName:
                     Console.Write("Unesite ime korisnika: ");
                     break;
-                case 4:
+                case EnumPrintId.UserSurname:
                     Console.Write("Unesite prezime korisnika: ");
                     break;
-                case 5:
+                case EnumPrintId.NewUserYesNo:
                     Console.Write("Zelite kreirati novog korisnika (DA/NE): ");
                     break;
-                case 6:
+                case EnumPrintId.IsBussines:
                     Console.Write("Poslovni racun (DA/NE): ");
                     break;
-                case 7:
+                case EnumPrintId.CompanyName:
                     Console.Write("Unesite ime tvrtke: ");
                     break;
-                case 8:
+                case EnumPrintId.AccType:
                     Console.Write("Tip racuna (tekuci/ziro): ");
                     break;
-                case 9:
+                case EnumPrintId.AccOwerdraft:
                     Console.Write("Unesite dozvoljeni minus (kn): ");
                     break;
-                case 10:
+                case EnumPrintId.BalanceAcc:
                     Console.Write("Uplata na racun (tekuci/ziro): ");
                     break;
-                case 11:
+                case EnumPrintId.PlusAmount:
                     Console.Write("unesite iznos za uplatu (kn): ");
                     break;
-                case 12:
+                case EnumPrintId.MinusAmount:
                     Console.Write("unesite iznos za isplatu (kn): ");
                     break;
-                case 13:
+                case EnumPrintId.HistoryHeader:
                     Console.WriteLine("-----------Promet po racunu-----------");
                     break;
-                case 14:
+                case EnumPrintId.EndHeader:
                     Console.WriteLine("-----------kraj zapisa-----------");
                     break;
-                case 15:
+                case EnumPrintId.PressEnter:
                     Console.Write("pritisni Enter za povratak na izbornik");
                     break;
-                case 16:
+                case EnumPrintId.BalanceHeader:
                     Console.WriteLine("-----------stanje racuna-----------");
                     break;
-                case 20:
+                case EnumPrintId.PrintMenu:
                     Console.WriteLine("-----------Izbornik-----------");
                     Console.WriteLine("1. Stanje racuna");
                     Console.WriteLine("2. Promet po racunu");
@@ -72,38 +72,38 @@ namespace VjezbeC3
                     Console.WriteLine("5. Izlaz");
                     Console.Write("Izbor --> ");
                     break;
-                case 30:
+                case EnumPrintId.AddNewUser:
                     Console.Write("Zeli te li dodati korisnika (DA/NE): ");
                     break;
-                case 31:
+                case EnumPrintId.NewUserHeader:
                     Console.WriteLine("-----------Novi korisnik-----------");
                     break;
-                case 32:
+                case EnumPrintId.ExistUser:
                     Console.WriteLine("-----------Postojeci korisnik-----------");
                     break;
-                case 48:
+                case EnumPrintId.CloseUser:
                     Console.Write("Zatvoriti korisnika (DA/NE): ");
                     break;
-                case 49:
+                case EnumPrintId.EndApp:
                     Console.Write("Ugasiti aplikaciju (DA/NE): ");
                     break;
-                case 50:
+                case EnumPrintId.UserAddedHeader:
                     Console.WriteLine("-----------Korisnik dodan-----------");
                     break;
-                case 51:
+                case EnumPrintId.NewAccountHeader:
                     Console.WriteLine("-----------Racun otvoren-----------");
                     break;
-                case 100:
+                case EnumPrintId.WrongInput:
                     Console.WriteLine("-----------Pogresan unos-----------");
                     break;
-                case 101:
+                case EnumPrintId.AccNotFound:
                     Console.WriteLine("-----------Racun nije pronadjen-----------");
                     break;
-                case 102:
+                case EnumPrintId.IssufientBalance:
                     Console.WriteLine("Nedovoljno sredstva na racunu");
                     break;
                     break;
-                case 110:
+                case EnumPrintId.ExitHeader:
                     Console.WriteLine("-----------Izlazak-----------");
                     break;
                 default:
@@ -145,11 +145,11 @@ namespace VjezbeC3
             Console.WriteLine("--------------------------------");
         }
 
-        public void PrintNewAccInfo(string name, string surname, string oib, string accountType, string Iban, decimal overDraft, string companyName)
+        public void PrintNewAccInfo(string name, string surname, string oib, EnumAccType accountType, string Iban, decimal overDraft, string companyName)
         {
             Console.Clear();
-            PrintMsg(50, EnumColors.Green);
-            PrintMsg(51, EnumColors.Green);
+            PrintMsg(EnumPrintId.UserAddedHeader, EnumColors.Green);
+            PrintMsg(EnumPrintId.NewAccountHeader, EnumColors.Green);
             Console.WriteLine("Ime korisnika: {0}", name);
             Console.WriteLine("Prezime korisnika: {0}", surname);
             Console.WriteLine("Oib korisnika: {0}", oib);
@@ -161,15 +161,15 @@ namespace VjezbeC3
 
         private static void selectColor(EnumColors EnumColor)
         {
-            if ((int)EnumColor == 2)
+            if (EnumColor == EnumColors.Red)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
             }
-            else if ((int)EnumColor == 1)
+            else if (EnumColor == EnumColors.Green)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
             }
-            else if ((int)EnumColor == 0)
+            else if (EnumColor == EnumColors.White)
             {
                 Console.ForegroundColor = ConsoleColor.White;
             }

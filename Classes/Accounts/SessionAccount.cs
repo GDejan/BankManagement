@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VjezbeC3
+namespace BankManagement
 {
     internal class SessionAccount
     {
